@@ -1,0 +1,2374 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jurnal 7 Kebiasaan Anak Indonesia Hebat - SMPN 2 Jetis v9</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Poppins', sans-serif; }
+        .gradient-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .card-shadow { box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        .habit-card { transition: all 0.3s ease; }
+        .habit-card:hover { transform: translateY(-2px); }
+    </style>
+</head>
+<body class="gradient-bg min-h-screen">
+    <!-- Student Login Screen -->
+    <div id="loginScreen" class="min-h-screen flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl card-shadow p-8 w-full max-w-md">
+            <div class="text-center mb-8">
+                <div class="w-20 h-20 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full mx-auto mb-4 flex items-center justify-center">
+                    <span class="text-white text-2xl font-bold">📚</span>
+                </div>
+                <h1 class="text-2xl font-bold text-gray-800 mb-2">Jurnal 7 Kebiasaan Anak Indonesia Hebat</h1>
+                <p class="text-gray-600">Logn Siswa</p>
+                <p class="text-sm text-blue-600 font-semibold">SMPN 2 Jetis - Version 9</p>
+            </div>
+            
+            <form id="loginForm" class="space-y-6">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Pilih Kelas</label>
+                    <select id="classSelect" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        <option value="">-- Pilih Kelas --</option>
+                        <option value="9A">Kelas 9A</option>
+                        <option value="9B">Kelas 9B</option>
+                        <option value="9C">Kelas 9C</option>
+                    </select>
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Pilih Nama</label>
+                    <select id="studentSelect" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" disabled>
+                        <option value="">-- Pilih Kelas Terlebih Dahulu --</option>
+                    </select>
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Password</label>
+                    <input type="password" id="passwordInput" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Masukkan password">
+                </div>
+                
+                <button type="submit" class="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white py-3 rounded-lg font-semibold hover:from-blue-600 hover:to-purple-700 transition duration-300">
+                    Masuk
+                </button>
+                
+                <div class="text-center space-y-2">
+                    <button type="button" id="teacherLoginBtn" class="text-sm text-blue-600 hover:text-blue-800 underline block w-full">
+                        Login sebagai Guru
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Teacher Login Screen -->
+    <div id="teacherLoginScreen" class="hidden min-h-screen flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl card-shadow p-8 w-full max-w-md">
+            <div class="text-center mb-8">
+                <div class="w-20 h-20 bg-gradient-to-r from-green-500 to-blue-600 rounded-full mx-auto mb-4 flex items-center justify-center">
+                    <span class="text-white text-2xl font-bold">👨‍🏫</span>
+                </div>
+                <h1 class="text-2xl font-bold text-gray-800 mb-2">Jurnal 7 Kebiasaan Anak Indonesia Hebat</h1>
+                <p class="text-gray-600">LoginGuru</p>
+                <p class="text-sm text-blue-600 font-semibold">SMPN 2 Jetis - Version beta</p>
+            </div>
+            
+            <form id="teacherLoginForm" class="space-y-6">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Wali Kelas</label>
+                    <select id="teacherClass" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent">
+                        <option value="">-- Pilih Wali Kelas --</option>
+                        <option value="9A">Wali Kelas 9A</option>
+                        <option value="9B">Wali Kelas 9B</option>
+                        <option value="9C">Wali Kelas 9C</option>
+                    </select>
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Username</label>
+                    <input type="text" id="teacherUsername" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent" placeholder="Masukkan username">
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Password</label>
+                    <input type="password" id="teacherPassword" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent" placeholder="Masukkan password">
+                </div>
+                
+                <button type="submit" class="w-full bg-gradient-to-r from-green-500 to-blue-600 text-white py-3 rounded-lg font-semibold hover:from-green-600 hover:to-blue-700 transition duration-300">
+                    Masuk sebagai Guru
+                </button>
+                
+                <div class="text-center space-y-2">
+                    <button type="button" id="backToStudentBtn" class="text-sm text-gray-600 hover:text-gray-800 underline block w-full">
+                        ← Kembali ke Login Siswa
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Student Dashboard -->
+    <div id="studentDashboard" class="hidden min-h-screen p-4">
+        <div class="max-w-4xl mx-auto">
+            <!-- Header -->
+            <div class="bg-white rounded-2xl card-shadow p-6 mb-6">
+                <div class="flex justify-between items-center flex-wrap gap-4">
+                    <div>
+                        <h2 class="text-2xl font-bold text-gray-800" id="studentName">Selamat Datang!</h2>
+                        <p class="text-gray-600" id="studentClass">Kelas: -</p>
+                    </div>
+                    <button id="logoutBtn" class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition duration-300">
+                        Keluar
+                    </button>
+                </div>
+            </div>
+
+            <!-- Navigation Menu -->
+            <div class="bg-white rounded-2xl card-shadow p-6 mb-6">
+                <div class="flex flex-wrap gap-2">
+                    <button id="showJournalBtn" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition duration-300">
+                        📝 Jurnal Harian
+                    </button>
+                    <button id="showWeeklyBtn" class="bg-gray-300 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-400 transition duration-300">
+                        📊 Rekap Mingguan
+                    </button>
+                    <button id="showMonthlyBtn" class="bg-gray-300 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-400 transition duration-300">
+                        📈 Rekap Bulanan
+                    </button>
+                </div>
+            </div>
+
+            <!-- Journal Form -->
+            <div id="journalSection" class="bg-white rounded-2xl card-shadow p-6 mb-6">
+                <h3 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
+                    <span class="mr-2">✍️</span>
+                    Isi Jurnal Harian
+                </h3>
+                
+                <form id="journalForm" class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Hari</label>
+                            <select id="daySelect" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                                <option value="Senin">Senin</option>
+                                <option value="Selasa">Selasa</option>
+                                <option value="Rabu">Rabu</option>
+                                <option value="Kamis">Kamis</option>
+                                <option value="Jumat">Jumat</option>
+                                <option value="Sabtu">Sabtu</option>
+                                <option value="Minggu">Minggu</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Tanggal</label>
+                            <input type="date" id="dateInput" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="habit-card bg-gradient-to-br from-orange-100 to-orange-200 p-4 rounded-xl">
+                            <div class="flex items-center space-x-3 mb-3">
+                                <span class="text-2xl">🌅</span>
+                                <p class="font-semibold text-gray-800">Bangun Pagi</p>
+                            </div>
+                            <select id="bangunPagi" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 mb-2">
+                                <option value="">Pilih...</option>
+                                <option value="ya">✅ Ya</option>
+                                <option value="tidak">❌ Tidak</option>
+                            </select>
+                            <textarea id="bangunPagiKet" placeholder="Keterangan (opsional)" class="w-full p-2 border border-gray-300 rounded-lg text-sm resize-none" rows="2"></textarea>
+                        </div>
+
+                        <div class="habit-card bg-gradient-to-br from-green-100 to-green-200 p-4 rounded-xl">
+                            <div class="flex items-center space-x-3 mb-3">
+                                <span class="text-2xl">🤲</span>
+                                <p class="font-semibold text-gray-800">Beribadah</p>
+                            </div>
+                            <select id="beribadah" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 mb-2">
+                                <option value="">Pilih...</option>
+                                <option value="ya">✅ Ya</option>
+                                <option value="tidak">❌ Tidak</option>
+                            </select>
+                            <textarea id="beribadahKet" placeholder="Keterangan (opsional)" class="w-full p-2 border border-gray-300 rounded-lg text-sm resize-none" rows="2"></textarea>
+                        </div>
+
+                        <div class="habit-card bg-gradient-to-br from-blue-100 to-blue-200 p-4 rounded-xl">
+                            <div class="flex items-center space-x-3 mb-3">
+                                <span class="text-2xl">🏃</span>
+                                <p class="font-semibold text-gray-800">Berolahraga</p>
+                            </div>
+                            <select id="berolahraga" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 mb-2">
+                                <option value="">Pilih...</option>
+                                <option value="ya">✅ Ya</option>
+                                <option value="tidak">❌ Tidak</option>
+                            </select>
+                            <textarea id="berolahragaKet" placeholder="Keterangan (opsional)" class="w-full p-2 border border-gray-300 rounded-lg text-sm resize-none" rows="2"></textarea>
+                        </div>
+
+                        <div class="habit-card bg-gradient-to-br from-yellow-100 to-yellow-200 p-4 rounded-xl">
+                            <div class="flex items-center space-x-3 mb-3">
+                                <span class="text-2xl">🥗</span>
+                                <p class="font-semibold text-gray-800">Makan Sehat dan Bergizi</p>
+                            </div>
+                            <select id="makanSehat" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 mb-2">
+                                <option value="">Pilih...</option>
+                                <option value="ya">✅ Ya</option>
+                                <option value="tidak">❌ Tidak</option>
+                            </select>
+                            <textarea id="makanSehatKet" placeholder="Keterangan (opsional)" class="w-full p-2 border border-gray-300 rounded-lg text-sm resize-none" rows="2"></textarea>
+                        </div>
+
+                        <div class="habit-card bg-gradient-to-br from-purple-100 to-purple-200 p-4 rounded-xl">
+                            <div class="flex items-center space-x-3 mb-3">
+                                <span class="text-2xl">📖</span>
+                                <p class="font-semibold text-gray-800">Gemar Belajar</p>
+                            </div>
+                            <select id="gemarBelajar" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 mb-2">
+                                <option value="">Pilih...</option>
+                                <option value="ya">✅ Ya</option>
+                                <option value="tidak">❌ Tidak</option>
+                            </select>
+                            <textarea id="gemarBelajarKet" placeholder="Keterangan (opsional)" class="w-full p-2 border border-gray-300 rounded-lg text-sm resize-none" rows="2"></textarea>
+                        </div>
+
+                        <div class="habit-card bg-gradient-to-br from-pink-100 to-pink-200 p-4 rounded-xl">
+                            <div class="flex items-center space-x-3 mb-3">
+                                <span class="text-2xl">🤝</span>
+                                <p class="font-semibold text-gray-800">Bermasyarakat</p>
+                            </div>
+                            <select id="bermasyarakat" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 mb-2">
+                                <option value="">Pilih...</option>
+                                <option value="ya">✅ Ya</option>
+                                <option value="tidak">❌ Tidak</option>
+                            </select>
+                            <textarea id="bermasyarakatKet" placeholder="Keterangan (opsional)" class="w-full p-2 border border-gray-300 rounded-lg text-sm resize-none" rows="2"></textarea>
+                        </div>
+
+                        <div class="habit-card bg-gradient-to-br from-indigo-100 to-indigo-200 p-4 rounded-xl">
+                            <div class="flex items-center space-x-3 mb-3">
+                                <span class="text-2xl">😴</span>
+                                <p class="font-semibold text-gray-800">Tidur Cepat</p>
+                            </div>
+                            <select id="tidurCepat" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 mb-2">
+                                <option value="">Pilih...</option>
+                                <option value="ya">✅ Ya</option>
+                                <option value="tidak">❌ Tidak</option>
+                            </select>
+                            <textarea id="tidurCepatKet" placeholder="Keterangan (opsional)" class="w-full p-2 border border-gray-300 rounded-lg text-sm resize-none" rows="2"></textarea>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="w-full bg-gradient-to-r from-green-500 to-blue-500 text-white py-3 rounded-lg font-semibold hover:from-green-600 hover:to-blue-600 transition duration-300">
+                        Simpan Jurnal
+                    </button>
+<!-- Tombol Kirim ke Guru dipindahkan ke bawah tombol Simpan Jurnal -->
+<button type="button" id="sendToTeacherBtn" class="w-full bg-blue-500 text-white py-3 rounded-lg font-semibold hover:bg-blue-600 transition duration-300 flex items-center justify-center mt-2">
+    <span class="mr-2">📤</span>
+    Kirim ke Guru
+</button>
+                </form>
+            </div>
+
+            <!-- Weekly Recap -->
+            <div id="weeklySection" class="hidden bg-white rounded-2xl card-shadow p-6 mb-6">
+                <h3 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
+                    <span class="mr-2">📊</span>
+                    Rekap Mingguan
+                </h3>
+                
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Pilih Minggu</label>
+                    <input type="week" id="weekSelect" class="p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                </div>
+                
+                <div id="weeklyChart" class="mb-6">
+                    <!-- Weekly chart will be inserted here -->
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-gradient-to-r from-blue-50 to-blue-100 p-4 rounded-xl">
+                        <h4 class="font-semibold text-gray-800 mb-2">📈 Statistik Minggu Ini</h4>
+                        <div id="weeklyStats" class="space-y-2 text-sm">
+                            <!-- Weekly stats will be inserted here -->
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gradient-to-r from-green-50 to-green-100 p-4 rounded-xl">
+                        <h4 class="font-semibold text-gray-800 mb-2">🎯 Target & Pencapaian</h4>
+                        <div id="weeklyTargets" class="space-y-2 text-sm">
+                            <!-- Weekly targets will be inserted here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Monthly Recap -->
+            <div id="monthlySection" class="hidden bg-white rounded-2xl card-shadow p-6 mb-6">
+                <h3 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
+                    <span class="mr-2">📈</span>
+                    Rekap Bulanan
+                </h3>
+                
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Pilih Bulan</label>
+                    <input type="month" id="monthSelect" class="p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+                    <div class="bg-gradient-to-r from-purple-50 to-purple-100 p-4 rounded-xl">
+                        <h4 class="font-semibold text-gray-800 mb-4">📊 Grafik Kebiasaan Bulanan</h4>
+                        <div id="monthlyChart" class="h-64">
+                            <!-- Monthly chart will be inserted here -->
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="bg-gradient-to-r from-yellow-50 to-yellow-100 p-4 rounded-xl">
+                            <h4 class="font-semibold text-gray-800 mb-2">🏆 Pencapaian Bulan Ini</h4>
+                            <div id="monthlyAchievements" class="space-y-2 text-sm">
+                                <!-- Monthly achievements will be inserted here -->
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gradient-to-r from-red-50 to-red-100 p-4 rounded-xl">
+                            <h4 class="font-semibold text-gray-800 mb-2">💡 Saran Perbaikan</h4>
+                            <div id="monthlySuggestions" class="space-y-2 text-sm">
+                                <!-- Monthly suggestions will be inserted here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gradient-to-r from-indigo-50 to-indigo-100 p-4 rounded-xl">
+                    <h4 class="font-semibold text-gray-800 mb-4">📅 Kalender Kebiasaan</h4>
+                    <div id="monthlyCalendar" class="grid grid-cols-7 gap-1 text-xs">
+                        <!-- Monthly calendar will be inserted here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Teacher Feedback Display for Students -->
+            <div id="teacherFeedbackDisplay" class="bg-white rounded-2xl card-shadow p-6 mb-6">
+                <h3 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
+                    <span class="mr-2">💬</span>
+                    Umpan Balik dari Guru
+                </h3>
+                
+                <div id="studentFeedbackContent">
+                    <div class="text-center text-gray-500 py-8">
+                        <div class="text-4xl mb-4">📝</div>
+                        <p>Belum ada umpan balik dari guru</p>
+                        <p class="text-sm mt-2">Guru akan memberikan umpan balik mingguan untuk membantu perkembangan kebiasaan Anda</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Student Journal History -->
+            <div id="historySection" class="bg-white rounded-2xl card-shadow p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-xl font-bold text-gray-800 flex items-center">
+                        <span class="mr-2">📊</span>
+                        Riwayat Jurnal Saya
+                    </h3>
+                    
+                </div>
+                
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm">
+                        <thead>
+                            <tr class="bg-gray-50">
+                                <th class="p-3 text-left font-semibold">Tanggal</th>
+                                <th class="p-3 text-center font-semibold">🌅</th>
+                                <th class="p-3 text-center font-semibold">🤲</th>
+                                <th class="p-3 text-center font-semibold">🏃</th>
+                                <th class="p-3 text-center font-semibold">🥗</th>
+                                <th class="p-3 text-center font-semibold">📖</th>
+                                <th class="p-3 text-center font-semibold">🤝</th>
+                                <th class="p-3 text-center font-semibold">😴</th>
+                                <th class="p-3 text-center font-semibold">Total</th>
+                                <th class="p-3 text-center font-semibold">Detail</th>
+                            </tr>
+                        </thead>
+                        <tbody id="studentJournalTable">
+                            <tr>
+                                <td colspan="10" class="p-8 text-center text-gray-500">Belum ada data jurnal</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Teacher Dashboard -->
+    <div id="teacherDashboard" class="hidden min-h-screen p-4">
+        <div class="max-w-7xl mx-auto">
+            <!-- Header -->
+            <div class="bg-white rounded-2xl card-shadow p-6 mb-6">
+                <div class="flex justify-between items-center flex-wrap gap-4">
+                    <div>
+                        <h2 class="text-2xl font-bold text-gray-800">Dashboard Guru</h2>
+                        <p class="text-gray-600" id="teacherClassInfo">Jurnal 7 Kebiasaan</p>
+                    </div>
+                    <div class="flex gap-2">
+                        <button id="exportExcelBtn" class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition duration-300 flex items-center">
+                            <span class="mr-2">📊</span>
+                            Export Excel
+                        </button>
+                        <button id="teacherLogoutBtn" class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition duration-300">
+                            Keluar
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Statistics Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+                <div class="bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-2xl p-6">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-blue-100">Total Siswa</p>
+                            <p class="text-3xl font-bold" id="totalStudents">31</p>
+                        </div>
+                        <div class="text-4xl opacity-80">👥</div>
+                    </div>
+                </div>
+                
+                <div class="bg-gradient-to-r from-green-500 to-green-600 text-white rounded-2xl p-6">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-green-100">Jurnal Hari Ini</p>
+                            <p class="text-3xl font-bold" id="todayJournals">0</p>
+                        </div>
+                        <div class="text-4xl opacity-80">📝</div>
+                    </div>
+                </div>
+                
+                <div class="bg-gradient-to-r from-purple-500 to-purple-600 text-white rounded-2xl p-6">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-purple-100">Rata-rata Kebiasaan</p>
+                            <p class="text-3xl font-bold" id="avgHabits">0%</p>
+                        </div>
+                        <div class="text-4xl opacity-80">📊</div>
+                    </div>
+                </div>
+                
+                <div class="bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-2xl p-6">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-orange-100">Siswa Aktif</p>
+                            <p class="text-3xl font-bold" id="activeStudents">0</p>
+                        </div>
+                        <div class="text-4xl opacity-80">⭐</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Teacher Navigation Tabs -->
+            <div class="bg-white rounded-2xl card-shadow p-6 mb-6">
+                <div class="flex flex-wrap gap-2">
+                    <button id="showAllDataBtn" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition duration-300">
+                        👥 Data Jurnal Siswa
+                    </button>
+                    <button id="showTeacherNotesBtn" class="bg-gray-300 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-400 transition duration-300">
+                        📝 Keterangan Siswa
+                    </button>
+                    <button id="showTeacherFeedbackBtn" class="bg-gray-300 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-400 transition duration-300">
+                        💬 Umpan Balik Mingguan
+                    </button>
+                </div>
+            </div>
+
+            <!-- All Students Data -->
+            <div id="allDataSection" class="bg-white rounded-2xl card-shadow p-6">
+                <h3 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
+                    <span class="mr-2">👥</span>
+                    Data Jurnal Semua Siswa
+                </h3>
+                
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm">
+                        <thead>
+                            <tr class="bg-gray-50">
+                                <th class="p-3 text-left font-semibold">Nama Siswa</th>
+                                <th class="p-3 text-center font-semibold">Tanggal Terakhir</th>
+                                <th class="p-3 text-center font-semibold">🌅</th>
+                                <th class="p-3 text-center font-semibold">🤲</th>
+                                <th class="p-3 text-center font-semibold">🏃</th>
+                                <th class="p-3 text-center font-semibold">🥗</th>
+                                <th class="p-3 text-center font-semibold">📖</th>
+                                <th class="p-3 text-center font-semibold">🤝</th>
+                                <th class="p-3 text-center font-semibold">😴</th>
+                                <th class="p-3 text-center font-semibold">Total Hari</th>
+                                <th class="p-3 text-center font-semibold">Rata-rata</th>
+                            </tr>
+                        </thead>
+                        <tbody id="teacherJournalTable">
+                            <tr>
+                                <td colspan="11" class="p-8 text-center text-gray-500">Memuat data siswa...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Teacher Notes Section -->
+            <div id="teacherNotesSection" class="hidden bg-white rounded-2xl card-shadow p-6">
+                <h3 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
+                    <span class="mr-2">📝</span>
+                    Keterangan dan Catatan Siswa
+                </h3>
+                
+                <div class="mb-4 flex flex-wrap gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Filter Siswa</label>
+                        <select id="teacherStudentFilter" class="p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                            <option value="">Semua Siswa</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Filter Tanggal</label>
+                        <input type="date" id="teacherDateFilter" class="p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Filter Kebiasaan</label>
+                        <select id="teacherHabitFilter" class="p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                            <option value="">Semua Kebiasaan</option>
+                            <option value="bangunPagi">🌅 Bangun Pagi</option>
+                            <option value="beribadah">🤲 Beribadah</option>
+                            <option value="berolahraga">🏃 Berolahraga</option>
+                            <option value="makanSehat">🥗 Makan Sehat</option>
+                            <option value="gemarBelajar">📖 Gemar Belajar</option>
+                            <option value="bermasyarakat">🤝 Bermasyarakat</option>
+                            <option value="tidurCepat">😴 Tidur Cepat</option>
+                        </select>
+                    </div>
+                    <div class="flex items-end">
+                        <button id="teacherClearFiltersBtn" class="bg-gray-500 text-white px-4 py-3 rounded-lg hover:bg-gray-600 transition duration-300">
+                            🔄 Reset Filter
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm">
+                        <thead>
+                            <tr class="bg-gray-50">
+                                <th class="p-3 text-left font-semibold">Nama Siswa</th>
+                                <th class="p-3 text-left font-semibold">Tanggal</th>
+                                <th class="p-3 text-left font-semibold">Kebiasaan</th>
+                                <th class="p-3 text-left font-semibold">Status</th>
+                                <th class="p-3 text-left font-semibold">Keterangan</th>
+                            </tr>
+                        </thead>
+                        <tbody id="teacherNotesTable">
+                            <tr>
+                                <td colspan="5" class="p-8 text-center text-gray-500">Memuat data keterangan...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="mt-6 bg-gradient-to-r from-blue-50 to-blue-100 p-4 rounded-xl">
+                    <h4 class="font-semibold text-gray-800 mb-2">📊 Ringkasan Keterangan</h4>
+                    <div id="teacherNotesSummary" class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+                        <!-- Summary will be inserted here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Teacher Feedback Section -->
+            <div id="teacherFeedbackSection" class="hidden bg-white rounded-2xl card-shadow p-6">
+                <h3 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
+                    <span class="mr-2">💬</span>
+                    Umpan Balik Mingguan untuk Siswa
+                </h3>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <!-- Feedback Form -->
+                    <div class="bg-gradient-to-r from-blue-50 to-blue-100 p-6 rounded-xl">
+                        <h4 class="font-semibold text-gray-800 mb-4">✍️ Tulis Umpan Balik</h4>
+                        
+                        <form id="feedbackForm" class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Pilih Siswa</label>
+                                <select id="feedbackStudentSelect" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                                    <option value="">-- Pilih Siswa --</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Pilih Minggu</label>
+                                <input type="week" id="feedbackWeekSelect" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Penilaian Keseluruhan</label>
+                                <select id="feedbackRating" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                                    <option value="">-- Pilih Penilaian --</option>
+                                    <option value="excellent">⭐⭐⭐⭐⭐ Sangat Baik</option>
+                                    <option value="good">⭐⭐⭐⭐ Baik</option>
+                                    <option value="average">⭐⭐⭐ Cukup</option>
+                                    <option value="needs_improvement">⭐⭐ Perlu Perbaikan</option>
+                                    <option value="poor">⭐ Kurang</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Kebiasaan yang Perlu Diperbaiki</label>
+                                <div class="grid grid-cols-2 gap-2">
+                                    <label class="flex items-center space-x-2">
+                                        <input type="checkbox" name="improvementHabits" value="bangunPagi" class="rounded">
+                                        <span class="text-sm">🌅 Bangun Pagi</span>
+                                    </label>
+                                    <label class="flex items-center space-x-2">
+                                        <input type="checkbox" name="improvementHabits" value="beribadah" class="rounded">
+                                        <span class="text-sm">🤲 Beribadah</span>
+                                    </label>
+                                    <label class="flex items-center space-x-2">
+                                        <input type="checkbox" name="improvementHabits" value="berolahraga" class="rounded">
+                                        <span class="text-sm">🏃 Berolahraga</span>
+                                    </label>
+                                    <label class="flex items-center space-x-2">
+                                        <input type="checkbox" name="improvementHabits" value="makanSehat" class="rounded">
+                                        <span class="text-sm">🥗 Makan Sehat</span>
+                                    </label>
+                                    <label class="flex items-center space-x-2">
+                                        <input type="checkbox" name="improvementHabits" value="gemarBelajar" class="rounded">
+                                        <span class="text-sm">📖 Gemar Belajar</span>
+                                    </label>
+                                    <label class="flex items-center space-x-2">
+                                        <input type="checkbox" name="improvementHabits" value="bermasyarakat" class="rounded">
+                                        <span class="text-sm">🤝 Bermasyarakat</span>
+                                    </label>
+                                    <label class="flex items-center space-x-2">
+                                        <input type="checkbox" name="improvementHabits" value="tidurCepat" class="rounded">
+                                        <span class="text-sm">😴 Tidur Cepat</span>
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Pesan Motivasi</label>
+                                <textarea id="feedbackMessage" rows="4" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 resize-none" placeholder="Tulis pesan motivasi dan saran untuk siswa..."></textarea>
+                            </div>
+                            
+                            <button type="submit" class="w-full bg-gradient-to-r from-green-500 to-blue-500 text-white py-3 rounded-lg font-semibold hover:from-green-600 hover:to-blue-600 transition duration-300">
+                                💾 Simpan Umpan Balik
+                            </button>
+                        </form>
+                    </div>
+                    
+                    <!-- Student Performance Preview -->
+                    <div class="bg-gradient-to-r from-purple-50 to-purple-100 p-6 rounded-xl">
+                        <h4 class="font-semibold text-gray-800 mb-4">📊 Performa Siswa</h4>
+                        <div id="studentPerformancePreview" class="text-sm text-gray-600">
+                            Pilih siswa dan minggu untuk melihat performa
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Feedback History -->
+                <div class="mt-8">
+                    <h4 class="font-semibold text-gray-800 mb-4">📋 Riwayat Umpan Balik</h4>
+                    
+                    <div class="mb-4 flex flex-wrap gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Filter Siswa</label>
+                            <select id="feedbackHistoryStudentFilter" class="p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                                <option value="">Semua Siswa</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Filter Minggu</label>
+                            <input type="week" id="feedbackHistoryWeekFilter" class="p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <div class="flex items-end">
+                            <button id="clearFeedbackFiltersBtn" class="bg-gray-500 text-white px-4 py-3 rounded-lg hover:bg-gray-600 transition duration-300">
+                                🔄 Reset Filter
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm">
+                            <thead>
+                                <tr class="bg-gray-50">
+                                    <th class="p-3 text-left font-semibold">Siswa</th>
+                                    <th class="p-3 text-left font-semibold">Minggu</th>
+                                    <th class="p-3 text-left font-semibold">Penilaian</th>
+                                    <th class="p-3 text-left font-semibold">Perlu Perbaikan</th>
+                                    <th class="p-3 text-left font-semibold">Pesan</th>
+                                    <th class="p-3 text-center font-semibold">Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody id="feedbackHistoryTable">
+                                <tr>
+                                    <td colspan="6" class="p-8 text-center text-gray-500">Belum ada umpan balik</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Student data
+        const students = [
+            // Kelas 9A
+            { name: "ANAM NIDZAM KURNIAWAN", class: "9A", password: "9A1" },
+            { name: "BINTANG SAKTI PAMUNGKAS", class: "9A", password: "9A2" },
+            { name: "CHALIF IVANDER AL-ATHA", class: "9A", password: "9A3" },
+            { name: "DAFA ARDIANSYAH", class: "9A", password: "9A4" },
+            { name: "DAFA IKHWAN MA'RUFI", class: "9A", password: "9A5" },
+            { name: "DEVARA ZULLIO FAJRI", class: "9A", password: "9A6" },
+            { name: "DWI ARIF TIRTANA", class: "9A", password: "9A7" },
+            { name: "ERISKA TRI ARIYANTI", class: "9A", password: "9A8" },
+            { name: "FACHRI RASYAUN NAUFAL", class: "9A", password: "9A9" },
+            { name: "FARID DESELGI", class: "9A", password: "9A10" },
+            { name: "FEBRIANTO NUGROHO", class: "9A", password: "9A11" },
+            { name: "FEBRINA AULIA FIRDAUS", class: "9A", password: "9A12" },
+            { name: "IBNU BANU FATHONI", class: "9A", password: "9A13" },
+            { name: "IBNU SINA IBRAHIM", class: "9A", password: "9A14" },
+            { name: "IBRAHIM MUSTOFA", class: "9A", password: "9A15" },
+            { name: "ILHAM MAULANA HIDAYAT", class: "9A", password: "9A16" },
+            { name: "IQTO FAUZICO PANGESTU", class: "9A", password: "9A17" },
+            { name: "JEZZEN MALIKKIN", class: "9A", password: "9A18" },
+            { name: "LIVIANA CELISA", class: "9A", password: "9A19" },
+            { name: "LUTFI IHSAN ADITYA", class: "9A", password: "9A20" },
+            { name: "MIFTAKHUL JANAH", class: "9A", password: "9A21" },
+            { name: "MILA RAUDHAH KHAIRUN NISA`", class: "9A", password: "9A22" },
+            { name: "MUHAMMAD AHSIN DINAL MUSTOFA", class: "9A", password: "9A23" },
+            { name: "NAYIF RAMADHANI", class: "9A", password: "9A24" },
+            { name: "NIZHAM JANUWAR SAPUTRA", class: "9A", password: "9A25" },
+            { name: "REZKY ANGGA ADITYA PUTRA", class: "9A", password: "9A26" },
+            { name: "RIFA LIANA PUTRI", class: "9A", password: "9A27" },
+            { name: "SABRINA MULIAWATI", class: "9A", password: "9A28" },
+            { name: "SEKAR HASANAH", class: "9A", password: "9A29" },
+            { name: "SHAFIRA FACRU NISA", class: "9A", password: "9A30" },
+            { name: "SHEZA AGHIFTA NADILA", class: "9A", password: "9A31" },
+            { name: "TASYAVILA KHALISTA MAHESWARI", class: "9A", password: "9A32" },
+            
+            // Kelas 9B
+            { name: "ABIYYU HIBRIZI FAWWAS", class: "9B", password: "9B1" },
+            { name: "ADAM MAULANA", class: "9B", password: "9B2" },
+            { name: "ADITIYA GILANG PRATAMA", class: "9B", password: "9B3" },
+            { name: "ADZKIYA SHAFINA PUTRI", class: "9B", password: "9B4" },
+            { name: "AHMAD FAUZAN RAMADHAN", class: "9B", password: "9B5" },
+            { name: "ALVIANO RENDY PRATAMA", class: "9B", password: "9B6" },
+            { name: "ALVINO FADEL KURNIANTO", class: "9B", password: "9B7" },
+            { name: "ANANDITA DWIDYA AYU WARASTIKA", class: "9B", password: "9B8" },
+            { name: "ANGGITA HAPSARI", class: "9B", password: "9B9" },
+            { name: "ARMELDA MEYSA NUGROHO", class: "9B", password: "9B10" },
+            { name: "AVISSA AZALIA", class: "9B", password: "9B11" },
+            { name: "CANTIKA SEKAR PUSPITA", class: "9B", password: "9B12" },
+            { name: "DAVA RIZKY PRATAMA", class: "9B", password: "9B13" },
+            { name: "DELA YUDIA PUTRI", class: "9B", password: "9B14" },
+            { name: "ERLANGGA YUDHA PUTRA", class: "9B", password: "9B15" },
+            { name: "FAKHRIY ICHTIAR RAHMANSYAH", class: "9B", password: "9B16" },
+            { name: "FATTAH DAIHSAN NUGRAHA", class: "9B", password: "9B17" },
+            { name: "FAZA NAYLA PUTRICIA HUDA", class: "9B", password: "9B18" },
+            { name: "HANNA AULIA FADHILAH", class: "9B", password: "9B19" },
+            { name: "INTAN AULIA PURNAMA", class: "9B", password: "9B20" },
+            { name: "MAHAMMADA BAKHLADEV ARROYAN", class: "9B", password: "9B21" },
+            { name: "MUHAMMAD DHANI AL FADHILAH", class: "9B", password: "9B22" },
+            { name: "NAFIZA OLIVIA RAMADHANI", class: "9B", password: "9B23" },
+            { name: "NAILA ALZENA LAKEISHA", class: "9B", password: "9B24" },
+            { name: "NUARI BASKARI WIKANUANZA", class: "9B", password: "9B25" },
+            { name: "PASHYA SAPUTRA", class: "9B", password: "9B26" },
+            { name: "RAFKA MAHEKSA PRATAMA", class: "9B", password: "9B27" },
+            { name: "RAIHAN JULIAN YAHYA", class: "9B", password: "9B28" },
+            { name: "RANGGA DWI SAPUTRA", class: "9B", password: "9B29" },
+            { name: "RASYA CANDRA RISQIA", class: "9B", password: "9B30" },
+            { name: "ROBIN WIYANG RIYANTA", class: "9B", password: "9B31" },
+            { name: "SASONO GAYUH PAMUGAR", class: "9B", password: "9B32" },
+            
+            // Kelas 9C
+            { name: "ADZKIA PUTRI SUKINA", class: "9C", password: "9C1" },
+            { name: "AISYANAYA QURRATA A'YUNNA", class: "9C", password: "9C2" },
+            { name: "ANDINI CAHYA NINGRUM", class: "9C", password: "9C3" },
+            { name: "ANGGUN AL'FREDHA FRE'DHELLA", class: "9C", password: "9C4" },
+            { name: "BAIHAKKI TRI KAIZAN", class: "9C", password: "9C5" },
+            { name: "BELLA PRIMASTIKA MAHARANI", class: "9C", password: "9C6" },
+            { name: "BRILLIANO ZAKI AGHINIAWAN", class: "9C", password: "9C7" },
+            { name: "DHIKA AFRILIA PRAMANA", class: "9C", password: "9C8" },
+            { name: "DIAN PUSPITASARI", class: "9C", password: "9C9" },
+            { name: "DIMAS IRFAN ROZI", class: "9C", password: "9C10" },
+            { name: "ERIKA ERIYANTI", class: "9C", password: "9C11" },
+            { name: "EXIT RIFKI RAMADHAN", class: "9C", password: "9C12" },
+            { name: "FERISA ALYA KHOIRUNINDA PUTRI MULYANA", class: "9C", password: "9C13" },
+            { name: "ILHAM DWI WIDAYANTO", class: "9C", password: "9C14" },
+            { name: "KELVIN YOGA ADIT FIRMANSYAH", class: "9C", password: "9C15" },
+            { name: "LIVIA ARENDA WIJAYANTI", class: "9C", password: "9C16" },
+            { name: "MUHAMAD GIYAN SAPUTRA", class: "9C", password: "9C17" },
+            { name: "MUHAMMAD NUR HIDAYAT", class: "9C", password: "9C18" },
+            { name: "MUHAMMAD PANJI SAPUTRA", class: "9C", password: "9C19" },
+            { name: "MUHAMMAD RAFA SANTOSO", class: "9C", password: "9C20" },
+            { name: "NAOMI", class: "9C", password: "9C21" },
+            { name: "NUR FUAD ALMUZAKKY", class: "9C", password: "9C22" },
+            { name: "PANGESTU AJI", class: "9C", password: "9C23" },
+            { name: "PASAH AHMAT SHOLEH", class: "9C", password: "9C24" },
+            { name: "RESTU LANGGENG PURNOMO SIDI", class: "9C", password: "9C25" },
+            { name: "REVAN ADITYA PUTRA", class: "9C", password: "9C26" },
+            { name: "RIANI KUSUMA PUTRI", class: "9C", password: "9C27" },
+            { name: "RIZAL ZULIYANTO", class: "9C", password: "9C28" },
+            { name: "SABILA HUSNAYAINI", class: "9C", password: "9C29" },
+            { name: "VEBY MALWA ARDANI", class: "9C", password: "9C30" },
+            { name: "YASSIRLY AMRIYA", class: "9C", password: "9C31" }
+        ];
+
+        let currentUser = null;
+        let currentTeacherClass = null;
+        let journalData = JSON.parse(localStorage.getItem('journalData')) || {};
+        let teacherFeedback = JSON.parse(localStorage.getItem('teacherFeedback')) || {};
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded, initializing version 9...'); 
+            setTodayDate();
+            setupClassSelection();
+            setupEventListeners();
+            
+            // Verify elements exist
+            const classSelect = document.getElementById('classSelect');
+            const studentSelect = document.getElementById('studentSelect');
+            console.log('Class select found:', !!classSelect); 
+            console.log('Student select found:', !!studentSelect); 
+            console.log('Total students in data:', students.length); 
+        });
+        
+        function setupEventListeners() {
+            // Navigation button event listeners
+            document.getElementById('showJournalBtn').addEventListener('click', showJournalSection);
+            document.getElementById('showWeeklyBtn').addEventListener('click', showWeeklySection);
+            document.getElementById('showMonthlyBtn').addEventListener('click', showMonthlySection);
+            document.getElementById('logoutBtn').addEventListener('click', showLoginScreen);
+            
+            // Teacher navigation
+            document.getElementById('showAllDataBtn').addEventListener('click', showAllDataSection);
+            document.getElementById('showTeacherNotesBtn').addEventListener('click', showTeacherNotesSection);
+            document.getElementById('showTeacherFeedbackBtn').addEventListener('click', showTeacherFeedbackSection);
+            document.getElementById('teacherLogoutBtn').addEventListener('click', showLoginScreen);
+            
+            // Teacher filter event listeners
+            document.getElementById('teacherStudentFilter').addEventListener('change', filterTeacherNotes);
+            document.getElementById('teacherDateFilter').addEventListener('change', filterTeacherNotes);
+            document.getElementById('teacherHabitFilter').addEventListener('change', filterTeacherNotes);
+            document.getElementById('teacherClearFiltersBtn').addEventListener('click', clearTeacherFilters);
+            
+            // Week and month change listeners
+            document.getElementById('weekSelect').addEventListener('change', loadWeeklyData);
+            document.getElementById('monthSelect').addEventListener('change', loadMonthlyData);
+            
+            // Login forms
+            document.getElementById('loginForm').addEventListener('submit', handleStudentLogin);
+            document.getElementById('teacherLoginForm').addEventListener('submit', handleTeacherLogin);
+            document.getElementById('teacherLoginBtn').addEventListener('click', showTeacherLoginScreen);
+            document.getElementById('backToStudentBtn').addEventListener('click', showLoginScreen);
+            
+            // Journal form
+            document.getElementById('journalForm').addEventListener('submit', handleJournalSubmit);
+            document.getElementById('sendToTeacherBtn').addEventListener('click', sendToTeacher);
+            
+            // Teacher feedback form
+            document.getElementById('feedbackForm').addEventListener('submit', handleFeedbackSubmit);
+            document.getElementById('feedbackStudentSelect').addEventListener('change', updateStudentPerformancePreview);
+            document.getElementById('feedbackWeekSelect').addEventListener('change', updateStudentPerformancePreview);
+            document.getElementById('feedbackHistoryStudentFilter').addEventListener('change', filterFeedbackHistory);
+            document.getElementById('feedbackHistoryWeekFilter').addEventListener('change', filterFeedbackHistory);
+            document.getElementById('clearFeedbackFiltersBtn').addEventListener('click', clearFeedbackFilters);
+        }
+
+        function setupClassSelection() {
+            const classSelect = document.getElementById('classSelect');
+            const studentSelect = document.getElementById('studentSelect');
+            
+            // Clear any existing listeners
+            const newClassSelect = classSelect.cloneNode(true);
+            classSelect.parentNode.replaceChild(newClassSelect, classSelect);
+            
+            // Add fresh event listener
+            newClassSelect.addEventListener('change', function() {
+                const selectedClass = this.value;
+                console.log('Class selected:', selectedClass); 
+                
+                // Clear and reset student dropdown
+                const studentDropdown = document.getElementById('studentSelect');
+                studentDropdown.innerHTML = '';
+                studentDropdown.value = '';
+                
+                if (!selectedClass) {
+                    studentDropdown.disabled = true;
+                    studentDropdown.innerHTML = '<option value="">-- Pilih Kelas Terlebih Dahulu --</option>';
+                    return;
+                }
+                
+                // Enable dropdown and populate
+                studentDropdown.disabled = false;
+                studentDropdown.innerHTML = '<option value="">-- Pilih Nama Siswa --</option>';
+                
+                // Filter and add students
+                const filteredStudents = students.filter(student => student.class === selectedClass);
+                console.log('Filtered students:', filteredStudents.length);
+                
+                filteredStudents.forEach(student => {
+                    const option = document.createElement('option');
+                    option.value = student.name;
+                    option.textContent = student.name;
+                    studentDropdown.appendChild(option);
+                });
+                
+                // Force refresh
+                studentDropdown.style.display = 'none';
+                setTimeout(() => {
+                    studentDropdown.style.display = 'block';
+                }, 10);
+                
+                console.log('Student dropdown populated with', studentDropdown.options.length, 'options');
+            });
+        }
+
+        function setTodayDate() {
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('dateInput').value = today;
+            
+            const days = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+            const dayName = days[new Date().getDay()];
+            document.getElementById('daySelect').value = dayName;
+        }
+
+        function handleStudentLogin(e) {
+            e.preventDefault();
+            
+            const selectedName = document.getElementById('studentSelect').value;
+            const password = document.getElementById('passwordInput').value;
+            
+            if (!selectedName) {
+                showNotification('Silakan pilih nama siswa terlebih dahulu!', 'warning');
+                return;
+            }
+            
+            const student = students.find(s => s.name === selectedName && s.password === password);
+            
+            if (student) {
+                currentUser = student;
+                showStudentDashboard();
+                showNotification(`Selamat datang, ${student.name}! 🎉`, 'success');
+            } else {
+                showNotification('❌ Password salah! Silakan periksa kembali password Anda.', 'error');
+            }
+        }
+
+        function handleTeacherLogin(e) {
+            e.preventDefault();
+            
+            const teacherClass = document.getElementById('teacherClass').value;
+            const username = document.getElementById('teacherUsername').value.trim();
+            const password = document.getElementById('teacherPassword').value;
+            
+            if (!teacherClass) {
+                showNotification('Silakan pilih wali kelas terlebih dahulu!', 'warning');
+                return;
+            }
+            
+            if (!username || !password) {
+                showNotification('Silakan isi username dan password!', 'warning');
+                return;
+            }
+            
+            if (username.toLowerCase() === 'guru' && password === 'guru123') {
+                currentTeacherClass = teacherClass;
+                showTeacherDashboard();
+                showNotification(`Selamat datang, Wali Kelas ${teacherClass}! 👨‍🏫`, 'success');
+                // Clear form
+                document.getElementById('teacherClass').value = '';
+                document.getElementById('teacherUsername').value = '';
+                document.getElementById('teacherPassword').value = '';
+            } else {
+                showNotification('❌ Username atau password salah!\n\nGunakan:\nUsername: guru\nPassword: guru123', 'error');
+            }
+        }
+
+        function handleJournalSubmit(e) {
+            e.preventDefault();
+            
+            const day = document.getElementById('daySelect').value;
+            const date = document.getElementById('dateInput').value;
+            const habits = {
+                bangunPagi: document.getElementById('bangunPagi').value === 'ya',
+                beribadah: document.getElementById('beribadah').value === 'ya',
+                berolahraga: document.getElementById('berolahraga').value === 'ya',
+                makanSehat: document.getElementById('makanSehat').value === 'ya',
+                gemarBelajar: document.getElementById('gemarBelajar').value === 'ya',
+                bermasyarakat: document.getElementById('bermasyarakat').value === 'ya',
+                tidurCepat: document.getElementById('tidurCepat').value === 'ya'
+            };
+            
+            const keterangan = {
+                bangunPagi: document.getElementById('bangunPagiKet').value,
+                beribadah: document.getElementById('beribadahKet').value,
+                berolahraga: document.getElementById('berolahragaKet').value,
+                makanSehat: document.getElementById('makanSehatKet').value,
+                gemarBelajar: document.getElementById('gemarBelajarKet').value,
+                bermasyarakat: document.getElementById('bermasyarakatKet').value,
+                tidurCepat: document.getElementById('tidurCepatKet').value
+            };
+            
+            if (!journalData[currentUser.name]) {
+                journalData[currentUser.name] = [];
+            }
+            
+            // Check if entry for this date already exists
+            const existingIndex = journalData[currentUser.name].findIndex(entry => entry.date === date);
+            
+            const journalEntry = {
+                day,
+                date,
+                habits,
+                keterangan,
+                timestamp: new Date().toISOString()
+            };
+            
+            if (existingIndex >= 0) {
+                journalData[currentUser.name][existingIndex] = journalEntry;
+                showNotification('📝 Jurnal untuk tanggal ini berhasil diperbarui!', 'success');
+            } else {
+                journalData[currentUser.name].push(journalEntry);
+                const totalCompleted = Object.values(habits).filter(Boolean).length;
+                showNotification(
+                    `✅ Jurnal berhasil disimpan!\n\n` +
+                    `📅 ${day}, ${new Date(date).toLocaleDateString('id-ID')}\n` +
+                    `✨ Kebiasaan tercapai: ${totalCompleted}/7\n` +
+                    `🎯 Persentase: ${((totalCompleted/7)*100).toFixed(0)}%`,
+                    'success'
+                );
+            }
+            
+            localStorage.setItem('journalData', JSON.stringify(journalData));
+            loadStudentJournal();
+            
+            // Reset form
+            document.getElementById('journalForm').reset();
+            setTodayDate();
+        }
+
+        function sendToTeacher() {
+            const studentJournals = journalData[currentUser.name] || [];
+            if (studentJournals.length === 0) {
+                showNotification('Belum ada data jurnal untuk dikirim!', 'error');
+                return;
+            }
+            
+            // Show success notification with details
+            const totalHabits = studentJournals.reduce((sum, entry) => {
+                return sum + Object.values(entry.habits).filter(Boolean).length;
+            }, 0);
+            const avgPercentage = studentJournals.length > 0 ? ((totalHabits / (studentJournals.length * 7)) * 100).toFixed(1) : 0;
+            
+            showNotification(
+                `✅ Data jurnal berhasil dikirim ke guru!\n\n` +
+                `👤 Nama: ${currentUser.name}\n` +
+                `🏫 Kelas: ${currentUser.class}\n` +
+                `📅 Total hari: ${studentJournals.length} hari\n` +
+                `📊 Rata-rata kebiasaan: ${avgPercentage}%\n` +
+                `⏰ Dikirim pada: ${new Date().toLocaleString('id-ID')}\n\n` +
+                `Guru wali kelas akan segera menerima laporan jurnal Anda.`,
+                'success'
+            );
+        }
+
+        function showTeacherLoginScreen() {
+            document.getElementById('loginScreen').classList.add('hidden');
+            document.getElementById('teacherLoginScreen').classList.remove('hidden');
+            document.getElementById('studentDashboard').classList.add('hidden');
+            document.getElementById('teacherDashboard').classList.add('hidden');
+        }
+
+        function showStudentDashboard() {
+            document.getElementById('loginScreen').classList.add('hidden');
+            document.getElementById('teacherLoginScreen').classList.add('hidden');
+            document.getElementById('studentDashboard').classList.remove('hidden');
+            document.getElementById('teacherDashboard').classList.add('hidden');
+            
+            document.getElementById('studentName').textContent = `Selamat Datang, ${currentUser.name}!`;
+            document.getElementById('studentClass').textContent = `Kelas: ${currentUser.class}`;
+            
+            // Show journal section by default
+            showJournalSection();
+            loadStudentJournal();
+            loadStudentFeedback();
+            setCurrentWeekMonth();
+        }
+
+        function showTeacherDashboard() {
+            document.getElementById('loginScreen').classList.add('hidden');
+            document.getElementById('teacherLoginScreen').classList.add('hidden');
+            document.getElementById('studentDashboard').classList.add('hidden');
+            document.getElementById('teacherDashboard').classList.remove('hidden');
+            
+            // Update header with selected class
+            document.getElementById('teacherClassInfo').textContent = `Jurnal 7 Kebiasaan - Wali Kelas ${currentTeacherClass}`;
+            
+            // Show all data section by default
+            showAllDataSection();
+            loadTeacherData();
+            updateTeacherStats();
+            populateTeacherFilters();
+        }
+
+        function showLoginScreen() {
+            document.getElementById('loginScreen').classList.remove('hidden');
+            document.getElementById('teacherLoginScreen').classList.add('hidden');
+            document.getElementById('studentDashboard').classList.add('hidden');
+            document.getElementById('teacherDashboard').classList.add('hidden');
+            
+            // Reset forms
+            document.getElementById('classSelect').value = '';
+            document.getElementById('studentSelect').value = '';
+            document.getElementById('studentSelect').disabled = true;
+            document.getElementById('studentSelect').innerHTML = '<option value="">-- Pilih Kelas Terlebih Dahulu --</option>';
+            document.getElementById('passwordInput').value = '';
+            document.getElementById('teacherClass').value = '';
+            document.getElementById('teacherUsername').value = '';
+            document.getElementById('teacherPassword').value = '';
+            currentUser = null;
+            currentTeacherClass = null;
+        }
+
+        function showJournalSection() {
+            document.getElementById('journalSection').classList.remove('hidden');
+            document.getElementById('weeklySection').classList.add('hidden');
+            document.getElementById('monthlySection').classList.add('hidden');
+            document.getElementById('historySection').classList.remove('hidden');
+            
+            // Update button states
+            document.getElementById('showJournalBtn').className = 'bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition duration-300';
+            document.getElementById('showWeeklyBtn').className = 'bg-gray-300 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-400 transition duration-300';
+            document.getElementById('showMonthlyBtn').className = 'bg-gray-300 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-400 transition duration-300';
+        }
+
+        function showWeeklySection() {
+            document.getElementById('journalSection').classList.add('hidden');
+            document.getElementById('weeklySection').classList.remove('hidden');
+            document.getElementById('monthlySection').classList.add('hidden');
+            document.getElementById('historySection').classList.add('hidden');
+            
+            // Update button states
+            document.getElementById('showJournalBtn').className = 'bg-gray-300 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-400 transition duration-300';
+            document.getElementById('showWeeklyBtn').className = 'bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition duration-300';
+            document.getElementById('showMonthlyBtn').className = 'bg-gray-300 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-400 transition duration-300';
+            
+            loadWeeklyData();
+        }
+
+        function showMonthlySection() {
+            document.getElementById('journalSection').classList.add('hidden');
+            document.getElementById('weeklySection').classList.add('hidden');
+            document.getElementById('monthlySection').classList.remove('hidden');
+            document.getElementById('historySection').classList.add('hidden');
+            
+            // Update button states
+            document.getElementById('showJournalBtn').className = 'bg-gray-300 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-400 transition duration-300';
+            document.getElementById('showWeeklyBtn').className = 'bg-gray-300 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-400 transition duration-300';
+            document.getElementById('showMonthlyBtn').className = 'bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition duration-300';
+            
+            loadMonthlyData();
+        }
+
+        function showAllDataSection() {
+            document.getElementById('allDataSection').classList.remove('hidden');
+            document.getElementById('teacherNotesSection').classList.add('hidden');
+            document.getElementById('teacherFeedbackSection').classList.add('hidden');
+            
+            // Update button states
+            document.getElementById('showAllDataBtn').className = 'bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition duration-300';
+            document.getElementById('showTeacherNotesBtn').className = 'bg-gray-300 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-400 transition duration-300';
+            document.getElementById('showTeacherFeedbackBtn').className = 'bg-gray-300 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-400 transition duration-300';
+        }
+
+        function showTeacherNotesSection() {
+            document.getElementById('allDataSection').classList.add('hidden');
+            document.getElementById('teacherNotesSection').classList.remove('hidden');
+            document.getElementById('teacherFeedbackSection').classList.add('hidden');
+            
+            // Update button states
+            document.getElementById('showAllDataBtn').className = 'bg-gray-300 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-400 transition duration-300';
+            document.getElementById('showTeacherNotesBtn').className = 'bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition duration-300';
+            document.getElementById('showTeacherFeedbackBtn').className = 'bg-gray-300 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-400 transition duration-300';
+            
+            loadTeacherNotesData();
+        }
+
+        function showTeacherFeedbackSection() {
+            document.getElementById('allDataSection').classList.add('hidden');
+            document.getElementById('teacherNotesSection').classList.add('hidden');
+            document.getElementById('teacherFeedbackSection').classList.remove('hidden');
+            
+            // Update button states
+            document.getElementById('showAllDataBtn').className = 'bg-gray-300 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-400 transition duration-300';
+            document.getElementById('showTeacherNotesBtn').className = 'bg-gray-300 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-400 transition duration-300';
+            document.getElementById('showTeacherFeedbackBtn').className = 'bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition duration-300';
+            
+            loadTeacherFeedbackData();
+        }
+
+        function setCurrentWeekMonth() {
+            const today = new Date();
+            
+            // Set current week
+            const year = today.getFullYear();
+            const week = getWeekNumber(today);
+            document.getElementById('weekSelect').value = `${year}-W${week.toString().padStart(2, '0')}`;
+            
+            // Set current month
+            const month = `${year}-${(today.getMonth() + 1).toString().padStart(2, '0')}`;
+            document.getElementById('monthSelect').value = month;
+        }
+
+        function getWeekNumber(date) {
+            const d = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
+            const dayNum = d.getUTCDay() || 7;
+            d.setUTCDate(d.getUTCDate() + 4 - dayNum);
+            const yearStart = new Date(Date.UTC(d.getUTCFullYear(),0,1));
+            return Math.ceil((((d - yearStart) / 86400000) + 1)/7);
+        }
+
+        function loadWeeklyData() {
+            const weekValue = document.getElementById('weekSelect').value;
+            if (!weekValue) return;
+            
+            const [year, week] = weekValue.split('-W');
+            const studentJournals = journalData[currentUser.name] || [];
+            
+            // Get week start date
+            const weekStart = getDateOfWeek(parseInt(week), parseInt(year));
+            const weekEnd = new Date(weekStart);
+            weekEnd.setDate(weekEnd.getDate() + 6);
+            
+            // Filter journals for this week
+            const weekJournals = studentJournals.filter(entry => {
+                const entryDate = new Date(entry.date);
+                return entryDate >= weekStart && entryDate <= weekEnd;
+            });
+            
+            displayWeeklyChart(weekJournals);
+            displayWeeklyStats(weekJournals);
+        }
+
+        function loadMonthlyData() {
+            const monthValue = document.getElementById('monthSelect').value;
+            if (!monthValue) return;
+            
+            const [year, month] = monthValue.split('-');
+            const studentJournals = journalData[currentUser.name] || [];
+            
+            // Filter journals for this month
+            const monthJournals = studentJournals.filter(entry => {
+                const entryDate = new Date(entry.date);
+                return entryDate.getFullYear() == year && entryDate.getMonth() == (month - 1);
+            });
+            
+            displayMonthlyChart(monthJournals);
+            displayMonthlyStats(monthJournals);
+            displayMonthlyCalendar(monthJournals, year, month);
+        }
+
+        function getDateOfWeek(week, year) {
+            const simple = new Date(year, 0, 1 + (week - 1) * 7);
+            const dow = simple.getDay();
+            const ISOweekStart = simple;
+            if (dow <= 4)
+                ISOweekStart.setDate(simple.getDate() - simple.getDay() + 1);
+            else
+                ISOweekStart.setDate(simple.getDate() + 8 - simple.getDay());
+            return ISOweekStart;
+        }
+
+        function displayWeeklyChart(weekJournals) {
+            const chartDiv = document.getElementById('weeklyChart');
+            const habits = ['bangunPagi', 'beribadah', 'berolahraga', 'makanSehat', 'gemarBelajar', 'bermasyarakat', 'tidurCepat'];
+            const habitNames = ['🌅 Bangun Pagi', '🤲 Beribadah', '🏃 Berolahraga', '🥗 Makan Sehat', '📖 Gemar Belajar', '🤝 Bermasyarakat', '😴 Tidur Cepat'];
+            
+            let chartHTML = '<div class="bg-gray-50 p-4 rounded-lg"><h4 class="font-semibold mb-4">Grafik Kebiasaan Mingguan</h4>';
+            
+            habits.forEach((habit, index) => {
+                const count = weekJournals.filter(entry => entry.habits[habit]).length;
+                const percentage = weekJournals.length > 0 ? (count / weekJournals.length * 100) : 0;
+                
+                chartHTML += `
+                    <div class="mb-3">
+                        <div class="flex justify-between text-sm mb-1">
+                            <span>${habitNames[index]}</span>
+                            <span>${count}/${weekJournals.length} (${percentage.toFixed(0)}%)</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div class="bg-blue-500 h-2 rounded-full" style="width: ${percentage}%"></div>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            chartHTML += '</div>';
+            chartDiv.innerHTML = chartHTML;
+        }
+
+        function displayWeeklyStats(weekJournals) {
+            const statsDiv = document.getElementById('weeklyStats');
+            const totalDays = weekJournals.length;
+            const totalHabits = weekJournals.reduce((sum, entry) => {
+                return sum + Object.values(entry.habits).filter(Boolean).length;
+            }, 0);
+            const avgPerDay = totalDays > 0 ? (totalHabits / totalDays).toFixed(1) : 0;
+            
+            statsDiv.innerHTML = `
+                <p><strong>Total Hari:</strong> ${totalDays} hari</p>
+                <p><strong>Total Kebiasaan:</strong> ${totalHabits}</p>
+                <p><strong>Rata-rata per Hari:</strong> ${avgPerDay}/7</p>
+                <p><strong>Persentase:</strong> ${totalDays > 0 ? ((totalHabits / (totalDays * 7)) * 100).toFixed(1) : 0}%</p>
+            `;
+            
+            const targetsDiv = document.getElementById('weeklyTargets');
+            const targetPercentage = 80;
+            const currentPercentage = totalDays > 0 ? ((totalHabits / (totalDays * 7)) * 100) : 0;
+            
+            targetsDiv.innerHTML = `
+                <p><strong>Target Mingguan:</strong> ${targetPercentage}%</p>
+                <p><strong>Pencapaian:</strong> ${currentPercentage.toFixed(1)}%</p>
+                <p class="${currentPercentage >= targetPercentage ? 'text-green-600' : 'text-red-600'}">
+                    <strong>${currentPercentage >= targetPercentage ? '✅ Target Tercapai!' : '❌ Perlu Ditingkatkan'}</strong>
+                </p>
+            `;
+        }
+
+        function displayMonthlyChart(monthJournals) {
+            const chartDiv = document.getElementById('monthlyChart');
+            const habits = ['bangunPagi', 'beribadah', 'berolahraga', 'makanSehat', 'gemarBelajar', 'bermasyarakat', 'tidurCepat'];
+            const habitNames = ['Bangun Pagi', 'Beribadah', 'Berolahraga', 'Makan Sehat', 'Gemar Belajar', 'Bermasyarakat', 'Tidur Cepat'];
+            const colors = ['#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4', '#FFEAA7', '#DDA0DD', '#98D8C8'];
+            
+            let chartHTML = '<div class="space-y-2">';
+            
+            habits.forEach((habit, index) => {
+                const count = monthJournals.filter(entry => entry.habits[habit]).length;
+                const percentage = monthJournals.length > 0 ? (count / monthJournals.length * 100) : 0;
+                
+                chartHTML += `
+                    <div class="flex items-center space-x-2">
+                        <div class="w-3 h-3 rounded-full" style="background-color: ${colors[index]}"></div>
+                        <div class="flex-1">
+                            <div class="flex justify-between text-xs mb-1">
+                                <span>${habitNames[index]}</span>
+                                <span>${percentage.toFixed(0)}%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="h-2 rounded-full" style="width: ${percentage}%; background-color: ${colors[index]}"></div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            chartHTML += '</div>';
+            chartDiv.innerHTML = chartHTML;
+        }
+
+        function displayMonthlyStats(monthJournals) {
+            const achievementsDiv = document.getElementById('monthlyAchievements');
+            const suggestionsDiv = document.getElementById('monthlySuggestions');
+            
+            const totalDays = monthJournals.length;
+            const totalHabits = monthJournals.reduce((sum, entry) => {
+                return sum + Object.values(entry.habits).filter(Boolean).length;
+            }, 0);
+            
+            const habits = ['bangunPagi', 'beribadah', 'berolahraga', 'makanSehat', 'gemarBelajar', 'bermasyarakat', 'tidurCepat'];
+            const habitNames = ['Bangun Pagi', 'Beribadah', 'Berolahraga', 'Makan Sehat', 'Gemar Belajar', 'Bermasyarakat', 'Tidur Cepat'];
+            
+            // Calculate achievements
+            const bestHabits = habits.map((habit, index) => {
+                const count = monthJournals.filter(entry => entry.habits[habit]).length;
+                const percentage = totalDays > 0 ? (count / totalDays * 100) : 0;
+                return { name: habitNames[index], percentage, count };
+            }).sort((a, b) => b.percentage - a.percentage);
+            
+            achievementsDiv.innerHTML = `
+                <p><strong>Total Hari Jurnal:</strong> ${totalDays} hari</p>
+                <p><strong>Kebiasaan Terbaik:</strong> ${bestHabits[0]?.name || '-'} (${bestHabits[0]?.percentage.toFixed(0) || 0}%)</p>
+                <p><strong>Konsistensi Tertinggi:</strong> ${bestHabits[0]?.count || 0} dari ${totalDays} hari</p>
+                <p><strong>Rata-rata Harian:</strong> ${totalDays > 0 ? (totalHabits / totalDays).toFixed(1) : 0}/7</p>
+            `;
+            
+            // Calculate suggestions
+            const worstHabits = bestHabits.slice(-3).reverse();
+            let suggestions = '<p><strong>Fokus Perbaikan:</strong></p>';
+            worstHabits.forEach(habit => {
+                if (habit.percentage < 70) {
+                    suggestions += `<p>• Tingkatkan ${habit.name} (${habit.percentage.toFixed(0)}%)</p>`;
+                }
+            });
+            
+            if (totalDays < 20) {
+                suggestions += '<p>• Lebih konsisten mengisi jurnal harian</p>';
+            }
+            
+            suggestionsDiv.innerHTML = suggestions;
+        }
+
+        function displayMonthlyCalendar(monthJournals, year, month) {
+            const calendarDiv = document.getElementById('monthlyCalendar');
+            const daysInMonth = new Date(year, month, 0).getDate();
+            const firstDay = new Date(year, month - 1, 1).getDay();
+            
+            let calendarHTML = '';
+            
+            // Header
+            const dayNames = ['Min', 'Sen', 'Sel', 'Rab', 'Kam', 'Jum', 'Sab'];
+            dayNames.forEach(day => {
+                calendarHTML += `<div class="p-2 text-center font-semibold bg-gray-100">${day}</div>`;
+            });
+            
+            // Empty cells for days before month starts
+            for (let i = 0; i < firstDay; i++) {
+                calendarHTML += '<div class="p-2"></div>';
+            }
+            
+            // Days of month
+            for (let day = 1; day <= daysInMonth; day++) {
+                const dateStr = `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
+                const dayJournal = monthJournals.find(entry => entry.date === dateStr);
+                
+                let cellClass = 'p-2 text-center border border-gray-200 ';
+                let content = day;
+                
+                if (dayJournal) {
+                    const habitCount = Object.values(dayJournal.habits).filter(Boolean).length;
+                    if (habitCount >= 5) {
+                        cellClass += 'bg-green-200 text-green-800';
+                        content += '<br>✅';
+                    } else if (habitCount >= 3) {
+                        cellClass += 'bg-yellow-200 text-yellow-800';
+                        content += '<br>⚠️';
+                    } else {
+                        cellClass += 'bg-red-200 text-red-800';
+                        content += '<br>❌';
+                    }
+                } else {
+                    cellClass += 'bg-gray-100 text-gray-400';
+                }
+                
+                calendarHTML += `<div class="${cellClass}">${content}</div>`;
+            }
+            
+            calendarDiv.innerHTML = calendarHTML;
+        }
+
+        function loadStudentJournal() {
+            const tableBody = document.getElementById('studentJournalTable');
+            const studentJournals = journalData[currentUser.name] || [];
+            
+            if (studentJournals.length === 0) {
+                tableBody.innerHTML = '<tr><td colspan="10" class="p-8 text-center text-gray-500">Belum ada data jurnal</td></tr>';
+                return;
+            }
+            
+            // Sort by date (newest first)
+            studentJournals.sort((a, b) => new Date(b.date) - new Date(a.date));
+            
+            tableBody.innerHTML = studentJournals.map((entry, index) => {
+                const habits = entry.habits;
+                const keterangan = entry.keterangan || {};
+                const total = Object.values(habits).filter(Boolean).length;
+                
+                // Check if there are any notes
+                const hasNotes = Object.values(keterangan).some(note => note && note.trim());
+                
+                return `
+                    <tr class="border-b hover:bg-gray-50">
+                        <td class="p-3">${entry.day}, ${new Date(entry.date).toLocaleDateString('id-ID')}</td>
+                        <td class="p-3 text-center">${habits.bangunPagi ? '✅' : '❌'}</td>
+                        <td class="p-3 text-center">${habits.beribadah ? '✅' : '❌'}</td>
+                        <td class="p-3 text-center">${habits.berolahraga ? '✅' : '❌'}</td>
+                        <td class="p-3 text-center">${habits.makanSehat ? '✅' : '❌'}</td>
+                        <td class="p-3 text-center">${habits.gemarBelajar ? '✅' : '❌'}</td>
+                        <td class="p-3 text-center">${habits.bermasyarakat ? '✅' : '❌'}</td>
+                        <td class="p-3 text-center">${habits.tidurCepat ? '✅' : '❌'}</td>
+                        <td class="p-3 text-center font-semibold ${total >= 5 ? 'text-green-600' : total >= 3 ? 'text-yellow-600' : 'text-red-600'}">${total}/7</td>
+                        <td class="p-3 text-xs">
+                            ${hasNotes ? `<button onclick="showStudentNotes('${entry.date}')" class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs hover:bg-blue-200">Lihat Catatan</button>` : '<span class="text-gray-400">-</span>'}
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        function loadTeacherData() {
+            const tableBody = document.getElementById('teacherJournalTable');
+            
+            // Filter students by teacher's class
+            const classStudents = students.filter(student => student.class === currentTeacherClass);
+            
+            const studentStats = classStudents.map(student => {
+                const studentJournals = journalData[student.name] || [];
+                
+                if (studentJournals.length === 0) {
+                    return {
+                        name: student.name,
+                        lastDate: '-',
+                        totalDays: 0,
+                        habitTotals: { bangunPagi: 0, beribadah: 0, berolahraga: 0, makanSehat: 0, gemarBelajar: 0, bermasyarakat: 0, tidurCepat: 0 },
+                        average: 0
+                    };
+                }
+                
+                // Sort by date to get the latest entry
+                const sortedJournals = [...studentJournals].sort((a, b) => new Date(b.date) - new Date(a.date));
+                const lastEntry = sortedJournals[0];
+                
+                // Calculate totals
+                const habitTotals = { bangunPagi: 0, beribadah: 0, berolahraga: 0, makanSehat: 0, gemarBelajar: 0, bermasyarakat: 0, tidurCepat: 0 };
+                let totalHabits = 0;
+                
+                studentJournals.forEach(entry => {
+                    Object.keys(habitTotals).forEach(habit => {
+                        if (entry.habits[habit]) {
+                            habitTotals[habit]++;
+                            totalHabits++;
+                        }
+                    });
+                });
+                
+                const average = studentJournals.length > 0 ? (totalHabits / (studentJournals.length * 7) * 100).toFixed(1) : 0;
+                
+                return {
+                    name: student.name,
+                    lastDate: new Date(lastEntry.date).toLocaleDateString('id-ID'),
+                    totalDays: studentJournals.length,
+                    habitTotals,
+                    average: parseFloat(average)
+                };
+            });
+            
+            tableBody.innerHTML = studentStats.map(stat => `
+                <tr class="border-b hover:bg-gray-50">
+                    <td class="p-3 font-medium">${stat.name}</td>
+                    <td class="p-3 text-center">${stat.lastDate}</td>
+                    <td class="p-3 text-center">${stat.habitTotals.bangunPagi}</td>
+                    <td class="p-3 text-center">${stat.habitTotals.beribadah}</td>
+                    <td class="p-3 text-center">${stat.habitTotals.berolahraga}</td>
+                    <td class="p-3 text-center">${stat.habitTotals.makanSehat}</td>
+                    <td class="p-3 text-center">${stat.habitTotals.gemarBelajar}</td>
+                    <td class="p-3 text-center">${stat.habitTotals.bermasyarakat}</td>
+                    <td class="p-3 text-center">${stat.habitTotals.tidurCepat}</td>
+                    <td class="p-3 text-center font-semibold">${stat.totalDays}</td>
+                    <td class="p-3 text-center font-semibold ${stat.average >= 70 ? 'text-green-600' : stat.average >= 50 ? 'text-yellow-600' : 'text-red-600'}">${stat.average}%</td>
+                </tr>
+            `).join('');
+        }
+
+        function updateTeacherStats() {
+            const today = new Date().toISOString().split('T')[0];
+            let todayCount = 0;
+            let totalHabits = 0;
+            let totalEntries = 0;
+            let activeStudents = 0;
+            
+            // Filter students by teacher's class
+            const classStudents = students.filter(student => student.class === currentTeacherClass);
+            
+            classStudents.forEach(student => {
+                const studentJournals = journalData[student.name] || [];
+                
+                // Count today's journals
+                const todayJournal = studentJournals.find(entry => entry.date === today);
+                if (todayJournal) todayCount++;
+                
+                // Count active students (have at least one journal)
+                if (studentJournals.length > 0) activeStudents++;
+                
+                // Calculate total habits
+                studentJournals.forEach(entry => {
+                    totalHabits += Object.values(entry.habits).filter(Boolean).length;
+                    totalEntries++;
+                });
+            });
+            
+            const avgHabits = totalEntries > 0 ? ((totalHabits / (totalEntries * 7)) * 100).toFixed(1) : 0;
+            
+            document.getElementById('totalStudents').textContent = classStudents.length;
+            document.getElementById('todayJournals').textContent = todayCount;
+            document.getElementById('avgHabits').textContent = avgHabits + '%';
+            document.getElementById('activeStudents').textContent = activeStudents;
+        }
+
+        function populateTeacherFilters() {
+            const studentFilter = document.getElementById('teacherStudentFilter');
+            const classStudents = students.filter(student => student.class === currentTeacherClass);
+            
+            // Populate student filter for notes
+            studentFilter.innerHTML = '<option value="">Semua Siswa</option>';
+            classStudents.forEach(student => {
+                const option = document.createElement('option');
+                option.value = student.name;
+                option.textContent = student.name;
+                studentFilter.appendChild(option);
+            });
+            
+            // Populate feedback student filters
+            const feedbackStudentSelect = document.getElementById('feedbackStudentSelect');
+            const feedbackHistoryStudentFilter = document.getElementById('feedbackHistoryStudentFilter');
+            
+            feedbackStudentSelect.innerHTML = '<option value="">-- Pilih Siswa --</option>';
+            feedbackHistoryStudentFilter.innerHTML = '<option value="">Semua Siswa</option>';
+            
+            classStudents.forEach(student => {
+                const option1 = document.createElement('option');
+                option1.value = student.name;
+                option1.textContent = student.name;
+                feedbackStudentSelect.appendChild(option1);
+                
+                const option2 = document.createElement('option');
+                option2.value = student.name;
+                option2.textContent = student.name;
+                feedbackHistoryStudentFilter.appendChild(option2);
+            });
+            
+            // Set current week for feedback
+            const today = new Date();
+            const year = today.getFullYear();
+            const week = getWeekNumber(today);
+            document.getElementById('feedbackWeekSelect').value = `${year}-W${week.toString().padStart(2, '0')}`;
+        }
+
+        function loadTeacherNotesData() {
+            const classStudents = students.filter(student => student.class === currentTeacherClass);
+            const allNotes = [];
+            
+            classStudents.forEach(student => {
+                const studentJournals = journalData[student.name] || [];
+                
+                studentJournals.forEach(entry => {
+                    if (entry.keterangan) {
+                        Object.entries(entry.keterangan).forEach(([habit, note]) => {
+                            if (note && note.trim()) {
+                                allNotes.push({
+                                    studentName: student.name,
+                                    date: entry.date,
+                                    day: entry.day,
+                                    habit: habit,
+                                    status: entry.habits[habit] ? 'Ya' : 'Tidak',
+                                    note: note.trim()
+                                });
+                            }
+                        });
+                    }
+                });
+            });
+            
+            // Sort by date (newest first)
+            allNotes.sort((a, b) => new Date(b.date) - new Date(a.date));
+            
+            displayTeacherNotesTable(allNotes);
+            displayTeacherNotesSummary(allNotes);
+        }
+
+        function displayTeacherNotesTable(notes) {
+            const tableBody = document.getElementById('teacherNotesTable');
+            const habitNames = {
+                bangunPagi: '🌅 Bangun Pagi',
+                beribadah: '🤲 Beribadah',
+                berolahraga: '🏃 Berolahraga',
+                makanSehat: '🥗 Makan Sehat',
+                gemarBelajar: '📖 Gemar Belajar',
+                bermasyarakat: '🤝 Bermasyarakat',
+                tidurCepat: '😴 Tidur Cepat'
+            };
+            
+            if (notes.length === 0) {
+                tableBody.innerHTML = '<tr><td colspan="5" class="p-8 text-center text-gray-500">Tidak ada keterangan yang ditemukan</td></tr>';
+                return;
+            }
+            
+            tableBody.innerHTML = notes.map(note => `
+                <tr class="border-b hover:bg-gray-50">
+                    <td class="p-3 font-medium">${note.studentName}</td>
+                    <td class="p-3">${note.day}, ${new Date(note.date).toLocaleDateString('id-ID')}</td>
+                    <td class="p-3">${habitNames[note.habit]}</td>
+                    <td class="p-3">
+                        <span class="px-2 py-1 rounded-full text-xs font-semibold ${note.status === 'Ya' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}">
+                            ${note.status === 'Ya' ? '✅ Ya' : '❌ Tidak'}
+                        </span>
+                    </td>
+                    <td class="p-3 max-w-xs">
+                        <div class="text-sm text-gray-700 break-words">${note.note}</div>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function displayTeacherNotesSummary(notes) {
+            const summaryDiv = document.getElementById('teacherNotesSummary');
+            
+            // Count notes by habit
+            const habitCounts = {};
+            const habitNames = {
+                bangunPagi: '🌅 Bangun Pagi',
+                beribadah: '🤲 Beribadah',
+                berolahraga: '🏃 Berolahraga',
+                makanSehat: '🥗 Makan Sehat',
+                gemarBelajar: '📖 Gemar Belajar',
+                bermasyarakat: '🤝 Bermasyarakat',
+                tidurCepat: '😴 Tidur Cepat'
+            };
+            
+            notes.forEach(note => {
+                if (!habitCounts[note.habit]) {
+                    habitCounts[note.habit] = { yes: 0, no: 0 };
+                }
+                if (note.status === 'Ya') {
+                    habitCounts[note.habit].yes++;
+                } else {
+                    habitCounts[note.habit].no++;
+                }
+            });
+            
+            // Count unique students with notes
+            const uniqueStudents = [...new Set(notes.map(note => note.studentName))];
+            
+            // Most active students
+            const studentNoteCounts = {};
+            notes.forEach(note => {
+                studentNoteCounts[note.studentName] = (studentNoteCounts[note.studentName] || 0) + 1;
+            });
+            
+            const topStudents = Object.entries(studentNoteCounts)
+                .sort(([,a], [,b]) => b - a)
+                .slice(0, 3);
+            
+            summaryDiv.innerHTML = `
+                <div class="bg-white p-3 rounded-lg">
+                    <h5 class="font-semibold text-gray-800 mb-2">📊 Total Keterangan</h5>
+                    <p><strong>Total Catatan:</strong> ${notes.length}</p>
+                    <p><strong>Siswa Aktif:</strong> ${uniqueStudents.length} siswa</p>
+                    <p><strong>Rata-rata per Siswa:</strong> ${uniqueStudents.length > 0 ? (notes.length / uniqueStudents.length).toFixed(1) : 0} catatan</p>
+                </div>
+                
+                <div class="bg-white p-3 rounded-lg">
+                    <h5 class="font-semibold text-gray-800 mb-2">🏆 Siswa Paling Aktif</h5>
+                    ${topStudents.length > 0 ? topStudents.map((student, index) => 
+                        `<p><strong>${index + 1}.</strong> ${student[0]} (${student[1]} catatan)</p>`
+                    ).join('') : '<p class="text-gray-500">Belum ada data</p>'}
+                </div>
+                
+                <div class="bg-white p-3 rounded-lg">
+                    <h5 class="font-semibold text-gray-800 mb-2">📝 Kebiasaan Terbanyak</h5>
+                    ${Object.keys(habitCounts).length > 0 ? 
+                        Object.entries(habitCounts)
+                            .sort(([,a], [,b]) => (b.yes + b.no) - (a.yes + a.no))
+                            .slice(0, 3)
+                            .map(([habit, counts]) => 
+                                `<p><strong>${habitNames[habit]}:</strong> ${counts.yes + counts.no} catatan</p>`
+                            ).join('') 
+                        : '<p class="text-gray-500">Belum ada data</p>'
+                    }
+                </div>
+            `;
+        }
+
+        function filterTeacherNotes() {
+            const studentFilter = document.getElementById('teacherStudentFilter').value;
+            const dateFilter = document.getElementById('teacherDateFilter').value;
+            const habitFilter = document.getElementById('teacherHabitFilter').value;
+            
+            const classStudents = students.filter(student => student.class === currentTeacherClass);
+            const allNotes = [];
+            
+            classStudents.forEach(student => {
+                // Apply student filter
+                if (studentFilter && student.name !== studentFilter) return;
+                
+                const studentJournals = journalData[student.name] || [];
+                
+                studentJournals.forEach(entry => {
+                    // Apply date filter
+                    if (dateFilter && entry.date !== dateFilter) return;
+                    
+                    if (entry.keterangan) {
+                        Object.entries(entry.keterangan).forEach(([habit, note]) => {
+                            // Apply habit filter
+                            if (habitFilter && habit !== habitFilter) return;
+                            
+                            if (note && note.trim()) {
+                                allNotes.push({
+                                    studentName: student.name,
+                                    date: entry.date,
+                                    day: entry.day,
+                                    habit: habit,
+                                    status: entry.habits[habit] ? 'Ya' : 'Tidak',
+                                    note: note.trim()
+                                });
+                            }
+                        });
+                    }
+                });
+            });
+            
+            // Sort by date (newest first)
+            allNotes.sort((a, b) => new Date(b.date) - new Date(a.date));
+            
+            displayTeacherNotesTable(allNotes);
+            displayTeacherNotesSummary(allNotes);
+        }
+
+        function clearTeacherFilters() {
+            document.getElementById('teacherStudentFilter').value = '';
+            document.getElementById('teacherDateFilter').value = '';
+            document.getElementById('teacherHabitFilter').value = '';
+            loadTeacherNotesData();
+        }
+
+        // Show student notes popup
+        function showStudentNotes(date) {
+            const studentJournals = journalData[currentUser.name] || [];
+            const entry = studentJournals.find(journal => journal.date === date);
+            
+            if (!entry || !entry.keterangan) return;
+            
+            const habitNames = {
+                bangunPagi: '🌅 Bangun Pagi',
+                beribadah: '🤲 Beribadah',
+                berolahraga: '🏃 Berolahraga',
+                makanSehat: '🥗 Makan Sehat',
+                gemarBelajar: '📖 Gemar Belajar',
+                bermasyarakat: '🤝 Bermasyarakat',
+                tidurCepat: '😴 Tidur Cepat'
+            };
+            
+            // Create detailed notes display
+            let notesDisplay = `📝 KETERANGAN JURNAL\n`;
+            notesDisplay += `📅 ${entry.day}, ${new Date(entry.date).toLocaleDateString('id-ID')}\n`;
+            notesDisplay += `👤 ${currentUser.name}\n\n`;
+            notesDisplay += `═══════════════════════════════\n\n`;
+            
+            // Show all habits with their status and notes
+            Object.entries(habitNames).forEach(([habitKey, habitName]) => {
+                const status = entry.habits[habitKey] ? '✅ Ya' : '❌ Tidak';
+                const note = entry.keterangan[habitKey] || '';
+                
+                notesDisplay += `${habitName}\n`;
+                notesDisplay += `Status: ${status}\n`;
+                if (note && note.trim()) {
+                    notesDisplay += `Keterangan: ${note.trim()}\n`;
+                } else {
+                    notesDisplay += `Keterangan: (tidak ada catatan)\n`;
+                }
+                notesDisplay += `\n`;
+            });
+            
+            // Show in alert with better formatting
+            alert(notesDisplay);
+        }
+        
+        // Make showStudentNotes available globally
+        window.showStudentNotes = showStudentNotes;
+
+        // Notification system
+        function showNotification(message, type = 'info') {
+            // Remove existing notification if any
+            const existingNotification = document.getElementById('notification');
+            if (existingNotification) {
+                existingNotification.remove();
+            }
+            
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.id = 'notification';
+            notification.className = `fixed top-4 right-4 z-50 max-w-md p-6 rounded-2xl shadow-2xl transform transition-all duration-500 ease-in-out`;
+            
+            // Set colors based on type
+            let bgColor, textColor, icon;
+            switch (type) {
+                case 'success':
+                    bgColor = 'bg-gradient-to-r from-green-500 to-green-600';
+                    textColor = 'text-white';
+                    icon = '✅';
+                    break;
+                case 'error':
+                    bgColor = 'bg-gradient-to-r from-red-500 to-red-600';
+                    textColor = 'text-white';
+                    icon = '❌';
+                    break;
+                case 'warning':
+                    bgColor = 'bg-gradient-to-r from-yellow-500 to-yellow-600';
+                    textColor = 'text-white';
+                    icon = '⚠️';
+                    break;
+                default:
+                    bgColor = 'bg-gradient-to-r from-blue-500 to-blue-600';
+                    textColor = 'text-white';
+                    icon = 'ℹ️';
+            }
+            
+            notification.className += ` ${bgColor} ${textColor}`;
+            
+            // Format message with line breaks
+            const formattedMessage = message.replace(/\n/g, '<br>');
+            
+            notification.innerHTML = `
+                <div class="flex items-start space-x-3">
+                    <div class="text-2xl flex-shrink-0">${icon}</div>
+                    <div class="flex-1">
+                        <div class="font-semibold mb-2">Notifikasi</div>
+                        <div class="text-sm leading-relaxed">${formattedMessage}</div>
+                    </div>
+                    <button onclick="closeNotification()" class="text-white hover:text-gray-200 text-xl font-bold ml-2 flex-shrink-0">×</button>
+                </div>
+            `;
+            
+            // Add to page
+            document.body.appendChild(notification);
+            
+            // Animate in
+            setTimeout(() => {
+                notification.style.transform = 'translateX(0)';
+                notification.style.opacity = '1';
+            }, 100);
+            
+            // Auto remove after 8 seconds for success messages, 5 seconds for others
+            const autoRemoveTime = type === 'success' ? 8000 : 5000;
+            setTimeout(() => {
+                closeNotification();
+            }, autoRemoveTime);
+        }
+        
+        function closeNotification() {
+            const notification = document.getElementById('notification');
+            if (notification) {
+                notification.style.transform = 'translateX(100%)';
+                notification.style.opacity = '0';
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.parentNode.removeChild(notification);
+                    }
+                }, 500);
+            }
+        }
+        
+        // Make closeNotification available globally
+        window.closeNotification = closeNotification;
+
+        // Teacher Feedback Functions
+        function handleFeedbackSubmit(e) {
+            e.preventDefault();
+            
+            const studentName = document.getElementById('feedbackStudentSelect').value;
+            const week = document.getElementById('feedbackWeekSelect').value;
+            const rating = document.getElementById('feedbackRating').value;
+            const message = document.getElementById('feedbackMessage').value.trim();
+            
+            if (!studentName || !week || !rating || !message) {
+                showNotification('Mohon lengkapi semua field yang diperlukan!', 'warning');
+                return;
+            }
+            
+            // Get selected improvement habits
+            const improvementHabits = Array.from(document.querySelectorAll('input[name="improvementHabits"]:checked'))
+                .map(checkbox => checkbox.value);
+            
+            // Create feedback entry
+            const feedbackKey = `${studentName}_${week}`;
+            const feedbackEntry = {
+                studentName,
+                week,
+                rating,
+                improvementHabits,
+                message,
+                teacherClass: currentTeacherClass,
+                timestamp: new Date().toISOString()
+            };
+            
+            // Save feedback
+            teacherFeedback[feedbackKey] = feedbackEntry;
+            localStorage.setItem('teacherFeedback', JSON.stringify(teacherFeedback));
+            
+            // Reset form
+            document.getElementById('feedbackForm').reset();
+            document.getElementById('feedbackWeekSelect').value = week; // Keep current week
+            
+            // Reload feedback data
+            loadTeacherFeedbackData();
+            
+            showNotification(
+                `✅ Umpan balik berhasil disimpan!\n\n` +
+                `👤 Siswa: ${studentName}\n` +
+                `📅 Minggu: ${formatWeekDisplay(week)}\n` +
+                `⭐ Penilaian: ${getRatingText(rating)}\n\n` +
+                `Siswa akan melihat umpan balik ini di dashboard mereka.`,
+                'success'
+            );
+        }
+
+        function updateStudentPerformancePreview() {
+            const studentName = document.getElementById('feedbackStudentSelect').value;
+            const week = document.getElementById('feedbackWeekSelect').value;
+            const previewDiv = document.getElementById('studentPerformancePreview');
+            
+            if (!studentName || !week) {
+                previewDiv.innerHTML = '<p class="text-gray-600">Pilih siswa dan minggu untuk melihat performa</p>';
+                return;
+            }
+            
+            // Get student's journal data for the selected week
+            const studentJournals = journalData[studentName] || [];
+            const [year, weekNum] = week.split('-W');
+            const weekStart = getDateOfWeek(parseInt(weekNum), parseInt(year));
+            const weekEnd = new Date(weekStart);
+            weekEnd.setDate(weekEnd.getDate() + 6);
+            
+            const weekJournals = studentJournals.filter(entry => {
+                const entryDate = new Date(entry.date);
+                return entryDate >= weekStart && entryDate <= weekEnd;
+            });
+            
+            if (weekJournals.length === 0) {
+                previewDiv.innerHTML = `
+                    <div class="text-center text-gray-500">
+                        <div class="text-2xl mb-2">📊</div>
+                        <p><strong>${studentName}</strong></p>
+                        <p>Minggu: ${formatWeekDisplay(week)}</p>
+                        <p class="mt-2 text-red-600">Belum ada data jurnal untuk minggu ini</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            // Calculate statistics
+            const totalDays = weekJournals.length;
+            const habits = ['bangunPagi', 'beribadah', 'berolahraga', 'makanSehat', 'gemarBelajar', 'bermasyarakat', 'tidurCepat'];
+            const habitNames = ['🌅 Bangun Pagi', '🤲 Beribadah', '🏃 Berolahraga', '🥗 Makan Sehat', '📖 Gemar Belajar', '🤝 Bermasyarakat', '😴 Tidur Cepat'];
+            
+            let totalHabits = 0;
+            const habitStats = habits.map((habit, index) => {
+                const count = weekJournals.filter(entry => entry.habits[habit]).length;
+                totalHabits += count;
+                const percentage = totalDays > 0 ? (count / totalDays * 100) : 0;
+                return { name: habitNames[index], count, percentage, habit };
+            });
+            
+            const avgPercentage = totalDays > 0 ? (totalHabits / (totalDays * 7) * 100) : 0;
+            
+            // Find habits that need improvement (less than 70%)
+            const needsImprovement = habitStats.filter(stat => stat.percentage < 70);
+            
+            previewDiv.innerHTML = `
+                <div class="space-y-4">
+                    <div class="text-center">
+                        <h5 class="font-semibold text-gray-800">${studentName}</h5>
+                        <p class="text-sm text-gray-600">Minggu: ${formatWeekDisplay(week)}</p>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-4 text-sm">
+                        <div class="bg-white p-3 rounded-lg">
+                            <p class="font-semibold text-gray-700">Total Hari</p>
+                            <p class="text-lg font-bold text-blue-600">${totalDays}/7</p>
+                        </div>
+                        <div class="bg-white p-3 rounded-lg">
+                            <p class="font-semibold text-gray-700">Rata-rata</p>
+                            <p class="text-lg font-bold ${avgPercentage >= 70 ? 'text-green-600' : avgPercentage >= 50 ? 'text-yellow-600' : 'text-red-600'}">${avgPercentage.toFixed(1)}%</p>
+                        </div>
+                    </div>
+                    
+                    ${needsImprovement.length > 0 ? `
+                        <div class="bg-yellow-50 p-3 rounded-lg">
+                            <p class="font-semibold text-gray-700 mb-2">Perlu Perbaikan:</p>
+                            <div class="space-y-1 text-sm">
+                                ${needsImprovement.map(habit => 
+                                    `<p>• ${habit.name} (${habit.percentage.toFixed(0)}%)</p>`
+                                ).join('')}
+                            </div>
+                        </div>
+                    ` : `
+                        <div class="bg-green-50 p-3 rounded-lg text-center">
+                            <p class="text-green-700 font-semibold">✅ Semua kebiasaan baik!</p>
+                        </div>
+                    `}
+                </div>
+            `;
+        }
+
+        function loadTeacherFeedbackData() {
+            // Set current week
+            const today = new Date();
+            const year = today.getFullYear();
+            const week = getWeekNumber(today);
+            document.getElementById('feedbackWeekSelect').value = `${year}-W${week.toString().padStart(2, '0')}`;
+            
+            loadFeedbackHistory();
+        }
+
+        function loadFeedbackHistory() {
+            const tableBody = document.getElementById('feedbackHistoryTable');
+            const classStudents = students.filter(student => student.class === currentTeacherClass);
+            
+            // Get all feedback for this class
+            const classFeedback = Object.values(teacherFeedback).filter(feedback => 
+                feedback.teacherClass === currentTeacherClass
+            );
+            
+            if (classFeedback.length === 0) {
+                tableBody.innerHTML = '<tr><td colspan="6" class="p-8 text-center text-gray-500">Belum ada umpan balik</td></tr>';
+                return;
+            }
+            
+            // Sort by timestamp (newest first)
+            classFeedback.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+            
+            tableBody.innerHTML = classFeedback.map(feedback => {
+                const improvementText = feedback.improvementHabits.length > 0 
+                    ? getHabitNames(feedback.improvementHabits).join(', ')
+                    : 'Tidak ada';
+                
+                return `
+                    <tr class="border-b hover:bg-gray-50">
+                        <td class="p-3 font-medium">${feedback.studentName}</td>
+                        <td class="p-3">${formatWeekDisplay(feedback.week)}</td>
+                        <td class="p-3">${getRatingText(feedback.rating)}</td>
+                        <td class="p-3 text-sm max-w-xs">${improvementText}</td>
+                        <td class="p-3 text-sm max-w-xs">
+                            <div class="truncate" title="${feedback.message}">${feedback.message}</div>
+                        </td>
+                        <td class="p-3 text-center">
+                            <button onclick="editFeedback('${feedback.studentName}_${feedback.week}')" class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs hover:bg-blue-200 mr-1">
+                                Edit
+                            </button>
+                            <button onclick="deleteFeedback('${feedback.studentName}_${feedback.week}')" class="bg-red-100 text-red-800 px-2 py-1 rounded text-xs hover:bg-red-200">
+                                Hapus
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        function filterFeedbackHistory() {
+            const studentFilter = document.getElementById('feedbackHistoryStudentFilter').value;
+            const weekFilter = document.getElementById('feedbackHistoryWeekFilter').value;
+            
+            const classFeedback = Object.values(teacherFeedback).filter(feedback => {
+                if (feedback.teacherClass !== currentTeacherClass) return false;
+                if (studentFilter && feedback.studentName !== studentFilter) return false;
+                if (weekFilter && feedback.week !== weekFilter) return false;
+                return true;
+            });
+            
+            const tableBody = document.getElementById('feedbackHistoryTable');
+            
+            if (classFeedback.length === 0) {
+                tableBody.innerHTML = '<tr><td colspan="6" class="p-8 text-center text-gray-500">Tidak ada data yang sesuai filter</td></tr>';
+                return;
+            }
+            
+            // Sort by timestamp (newest first)
+            classFeedback.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+            
+            tableBody.innerHTML = classFeedback.map(feedback => {
+                const improvementText = feedback.improvementHabits.length > 0 
+                    ? getHabitNames(feedback.improvementHabits).join(', ')
+                    : 'Tidak ada';
+                
+                return `
+                    <tr class="border-b hover:bg-gray-50">
+                        <td class="p-3 font-medium">${feedback.studentName}</td>
+                        <td class="p-3">${formatWeekDisplay(feedback.week)}</td>
+                        <td class="p-3">${getRatingText(feedback.rating)}</td>
+                        <td class="p-3 text-sm max-w-xs">${improvementText}</td>
+                        <td class="p-3 text-sm max-w-xs">
+                            <div class="truncate" title="${feedback.message}">${feedback.message}</div>
+                        </td>
+                        <td class="p-3 text-center">
+                            <button onclick="editFeedback('${feedback.studentName}_${feedback.week}')" class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs hover:bg-blue-200 mr-1">
+                                Edit
+                            </button>
+                            <button onclick="deleteFeedback('${feedback.studentName}_${feedback.week}')" class="bg-red-100 text-red-800 px-2 py-1 rounded text-xs hover:bg-red-200">
+                                Hapus
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        function clearFeedbackFilters() {
+            document.getElementById('feedbackHistoryStudentFilter').value = '';
+            document.getElementById('feedbackHistoryWeekFilter').value = '';
+            loadFeedbackHistory();
+        }
+
+        function loadStudentFeedback() {
+            const feedbackContent = document.getElementById('studentFeedbackContent');
+            
+            // Get feedback for current student
+            const studentFeedbacks = Object.values(teacherFeedback).filter(feedback => 
+                feedback.studentName === currentUser.name
+            );
+            
+            if (studentFeedbacks.length === 0) {
+                feedbackContent.innerHTML = `
+                    <div class="text-center text-gray-500 py-8">
+                        <div class="text-4xl mb-4">📝</div>
+                        <p>Belum ada umpan balik dari guru</p>
+                        <p class="text-sm mt-2">Guru akan memberikan umpan balik mingguan untuk membantu perkembangan kebiasaan Anda</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            // Sort by timestamp (newest first)
+            studentFeedbacks.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+            
+            feedbackContent.innerHTML = `
+                <div class="space-y-4">
+                    ${studentFeedbacks.map(feedback => `
+                        <div class="bg-gradient-to-r from-blue-50 to-purple-50 p-6 rounded-xl border-l-4 border-blue-500">
+                            <div class="flex justify-between items-start mb-4">
+                                <div>
+                                    <h4 class="font-semibold text-gray-800 flex items-center">
+                                        <span class="mr-2">📅</span>
+                                        Minggu: ${formatWeekDisplay(feedback.week)}
+                                    </h4>
+                                    <p class="text-sm text-gray-600">Dari: Wali Kelas ${feedback.teacherClass}</p>
+                                </div>
+                                <div class="text-right">
+                                    <div class="text-2xl mb-1">${getRatingEmoji(feedback.rating)}</div>
+                                    <p class="text-sm font-semibold ${getRatingColor(feedback.rating)}">${getRatingText(feedback.rating)}</p>
+                                </div>
+                            </div>
+                            
+                            ${feedback.improvementHabits.length > 0 ? `
+                                <div class="mb-4">
+                                    <h5 class="font-semibold text-gray-700 mb-2">🎯 Kebiasaan yang Perlu Diperbaiki:</h5>
+                                    <div class="flex flex-wrap gap-2">
+                                        ${feedback.improvementHabits.map(habit => 
+                                            `<span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm">${getHabitName(habit)}</span>`
+                                        ).join('')}
+                                    </div>
+                                </div>
+                            ` : ''}
+                            
+                            <div class="bg-white p-4 rounded-lg">
+                                <h5 class="font-semibold text-gray-700 mb-2">💬 Pesan dari Guru:</h5>
+                                <p class="text-gray-700 leading-relaxed">${feedback.message}</p>
+                            </div>
+                            
+                            <div class="mt-4 text-xs text-gray-500">
+                                Diberikan pada: ${new Date(feedback.timestamp).toLocaleString('id-ID')}
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        // Helper functions
+        function formatWeekDisplay(weekValue) {
+            const [year, week] = weekValue.split('-W');
+            const weekStart = getDateOfWeek(parseInt(week), parseInt(year));
+            const weekEnd = new Date(weekStart);
+            weekEnd.setDate(weekEnd.getDate() + 6);
+            
+            return `${weekStart.toLocaleDateString('id-ID', { day: 'numeric', month: 'short' })} - ${weekEnd.toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' })}`;
+        }
+
+        function getRatingText(rating) {
+            const ratings = {
+                excellent: 'Sangat Baik',
+                good: 'Baik',
+                average: 'Cukup',
+                needs_improvement: 'Perlu Perbaikan',
+                poor: 'Kurang'
+            };
+            return ratings[rating] || rating;
+        }
+
+        function getRatingEmoji(rating) {
+            const emojis = {
+                excellent: '⭐⭐⭐⭐⭐',
+                good: '⭐⭐⭐⭐',
+                average: '⭐⭐⭐',
+                needs_improvement: '⭐⭐',
+                poor: '⭐'
+            };
+            return emojis[rating] || '⭐';
+        }
+
+        function getRatingColor(rating) {
+            const colors = {
+                excellent: 'text-green-600',
+                good: 'text-blue-600',
+                average: 'text-yellow-600',
+                needs_improvement: 'text-orange-600',
+                poor: 'text-red-600'
+            };
+            return colors[rating] || 'text-gray-600';
+        }
+
+        function getHabitName(habitKey) {
+            const habitNames = {
+                bangunPagi: '🌅 Bangun Pagi',
+                beribadah: '🤲 Beribadah',
+                berolahraga: '🏃 Berolahraga',
+                makanSehat: '🥗 Makan Sehat',
+                gemarBelajar: '📖 Gemar Belajar',
+                bermasyarakat: '🤝 Bermasyarakat',
+                tidurCepat: '😴 Tidur Cepat'
+            };
+            return habitNames[habitKey] || habitKey;
+        }
+
+        function getHabitNames(habitKeys) {
+            return habitKeys.map(key => getHabitName(key));
+        }
+
+        function editFeedback(feedbackKey) {
+            const feedback = teacherFeedback[feedbackKey];
+            if (!feedback) return;
+            
+            // Populate form with existing data
+            document.getElementById('feedbackStudentSelect').value = feedback.studentName;
+            document.getElementById('feedbackWeekSelect').value = feedback.week;
+            document.getElementById('feedbackRating').value = feedback.rating;
+            document.getElementById('feedbackMessage').value = feedback.message;
+            
+            // Check improvement habits
+            document.querySelectorAll('input[name="improvementHabits"]').forEach(checkbox => {
+                checkbox.checked = feedback.improvementHabits.includes(checkbox.value);
+            });
+            
+            // Update preview
+            updateStudentPerformancePreview();
+            
+            showNotification('Data umpan balik telah dimuat ke form. Silakan edit dan simpan kembali.', 'info');
+        }
+
+        function deleteFeedback(feedbackKey) {
+            const feedback = teacherFeedback[feedbackKey];
+            if (!feedback) return;
+            
+            if (confirm(`Apakah Anda yakin ingin menghapus umpan balik untuk ${feedback.studentName} minggu ${formatWeekDisplay(feedback.week)}?`)) {
+                delete teacherFeedback[feedbackKey];
+                localStorage.setItem('teacherFeedback', JSON.stringify(teacherFeedback));
+                loadFeedbackHistory();
+                showNotification('Umpan balik berhasil dihapus.', 'success');
+            }
+        }
+
+        // Make functions available globally
+        window.editFeedback = editFeedback;
+        window.deleteFeedback = deleteFeedback;
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9759418de57af93e',t:'MTc1NjI3MzQ1Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
