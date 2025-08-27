@@ -1,0 +1,1 @@
+# JURNAL7KAIH
